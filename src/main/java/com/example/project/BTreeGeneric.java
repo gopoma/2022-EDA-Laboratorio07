@@ -94,13 +94,13 @@ public class BTreeGeneric<E extends Comparable<? super E>> {
         t.traverse();
         System.out.println();
 
-        System.out.printf("Contains 15?: %b%n", t.search(15));
-        System.out.printf("Contains 17?: %b%n", t.search(17));
-        System.out.printf("Contains 56?: %b%n", t.search(56));
-        System.out.printf("Contains 12?: %b%n", t.search(12));
-        System.out.printf("Contains 2?: %b%n", t.search(2));
-        System.out.printf("Contains 100?: %b%n", t.search(100));
-        System.out.printf("Contains 18?: %b%n", t.search(18));
+        // System.out.printf("Contains 15?: %b%n", t.search(15));
+        // System.out.printf("Contains 17?: %b%n", t.search(17));
+        // System.out.printf("Contains 56?: %b%n", t.search(56));
+        // System.out.printf("Contains 12?: %b%n", t.search(12));
+        // System.out.printf("Contains 2?: %b%n", t.search(2));
+        // System.out.printf("Contains 100?: %b%n", t.search(100));
+        // System.out.printf("Contains 18?: %b%n", t.search(18));
 
         t.clear();
         t.traverse();
