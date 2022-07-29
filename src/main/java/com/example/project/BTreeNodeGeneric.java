@@ -28,7 +28,7 @@ public class BTreeNodeGeneric<E extends Comparable<? super E>> {
     }
 
     public void insertNotFull(E key){
-        int i = this.num -1; // Initialize i as the rightmost index
+        int i = this.num - 1; // Initialize i as the rightmost index
 
         if(this.isLeaf){ // When it is a leaf node
             // Find the location where the new key should be inserted
@@ -43,7 +43,7 @@ public class BTreeNodeGeneric<E extends Comparable<? super E>> {
             // Find the child node location that should be inserted
             while (i >= 0 && this.keys.get(i).compareTo(key) > 0)
                 i--;
-            if (children.get(i+1).num == 2*this.minDeg - 1){ // When the child node is full
+            if (this.children.get(i+1).num == 2*this.minDeg-1){ // When the child node is full
                 splitChild(i+1, this.children.get(i+1));
                 // After splitting, the key in the middle of the child node moves up, and the child node splits into two
                 if (this.keys.get(i+1).compareTo(key) < 0)
@@ -75,7 +75,7 @@ public class BTreeNodeGeneric<E extends Comparable<? super E>> {
         this.children.set(i+1, z);
 
         // Move a key in y to this node
-        for (int j = num-1;j >= i;j--)
+        for (int j = this.num-1;j >= i;j--)
             this.keys.set(j+1, keys.get(j));
         this.keys.set(i, y.keys.get(this.minDeg-1));
 
@@ -97,7 +97,7 @@ public class BTreeNodeGeneric<E extends Comparable<? super E>> {
 
     public boolean search(E key){
         int i = 0;
-        while (i < this.num && key.compareTo(this.keys.get(i)) > 0)
+        while (i < this.num && (this.keys.get(i) == null || key.compareTo(this.keys.get(i)) > 0))
             i++;
 
         if (this.keys.get(i) != null && this.keys.get(i).compareTo(key) == 0)
