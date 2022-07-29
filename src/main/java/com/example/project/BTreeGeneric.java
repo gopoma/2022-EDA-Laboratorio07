@@ -13,6 +13,8 @@ public class BTreeGeneric<E extends Comparable<? super E>> {
     public void traverse(){
         if (this.root != null){
             this.root.traverse();
+        } else {
+            System.out.println("The BTree is Empty!");
         }
     }
 
@@ -49,7 +51,7 @@ public class BTreeGeneric<E extends Comparable<? super E>> {
     }
 
     public void clear() {
-        //TODO implement here!
+        this.root = null;
     }
 
     public boolean search(E value) {
@@ -91,5 +93,8 @@ public class BTreeGeneric<E extends Comparable<? super E>> {
         System.out.println("Traversal of tree constructed is");
         t.traverse();
         System.out.println();
+
+        t.clear();
+        t.traverse();
     }
 }
