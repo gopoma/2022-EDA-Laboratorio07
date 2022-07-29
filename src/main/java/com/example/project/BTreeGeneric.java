@@ -54,9 +54,9 @@ public class BTreeGeneric<E extends Comparable<? super E>> {
         this.root = null;
     }
 
+    // Function to find value
     public boolean search(E value) {
-        //TODO implement here!
-        return false;
+        return this.root == null ? false : this.root.search(value);
     }
 
     public int size() {
@@ -93,6 +93,10 @@ public class BTreeGeneric<E extends Comparable<? super E>> {
         System.out.println("Traversal of tree constructed is");
         t.traverse();
         System.out.println();
+
+        System.out.printf("Contains 15?: %b%n", t.search(15));
+        System.out.printf("Contains 56?: %b%n", t.search(56));
+        System.out.printf("Contains 17?: %b%n", t.search(56));
 
         t.clear();
         t.traverse();

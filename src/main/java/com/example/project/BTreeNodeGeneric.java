@@ -37,7 +37,7 @@ public class BTreeNodeGeneric<E extends Comparable<? super E>> {
                 i--;
             }
             this.keys.set(i+1, key);
-            num = num + 1;
+            this.num = this.num + 1;
         }
         else{
             // Find the child node location that should be inserted
@@ -79,19 +79,31 @@ public class BTreeNodeGeneric<E extends Comparable<? super E>> {
             this.keys.set(j+1, keys.get(j));
         this.keys.set(i, y.keys.get(this.minDeg-1));
 
-        num = num + 1;
+        this.num = this.num + 1;
     }
 
     public void traverse(){
         int i;
-        for (i = 0; i< num; i++){
+        for (i = 0; i < this.num; i++){
             if (!isLeaf)
-                children.get(i).traverse();
+                this.children.get(i).traverse();
             System.out.printf(" %d", this.keys.get(i));
         }
 
         if (!isLeaf){
             this.children.get(i).traverse();
         }
+    }
+
+    public boolean search(E key){
+        int i = 0;
+        while (i < this.num && key.compareTo(this.keys.get(i)) > 0)
+            i++;
+
+        if (this.keys.get(i) != null && this.keys.get(i).compareTo(key) == 0)
+            return true;
+        if (this.isLeaf)
+            return false;
+        return this.children.get(i).search(key);
     }
 }
