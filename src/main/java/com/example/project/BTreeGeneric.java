@@ -73,8 +73,7 @@ public class BTreeGeneric<E extends Comparable<? super E>> {
     }
 
     public int size() {
-        //TODO implement here!
-        return 0;
+        return this.root == null ? 0 : this.root.size();
     }
 
     public static void main(final String[] args) {
@@ -105,6 +104,9 @@ public class BTreeGeneric<E extends Comparable<? super E>> {
 
         System.out.println("Traversal of tree constructed is");
         t.traverse();
+        System.out.println();
+
+        System.out.printf("Size of the tree constructed is: %d%n", t.size());
         System.out.println();
 
         System.out.printf("Contains 15?: %b%n", t.search(15));

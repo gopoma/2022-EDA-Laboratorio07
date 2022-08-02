@@ -311,4 +311,18 @@ public class BTreeNodeGeneric<E extends Comparable<? super E>> {
         child.num += sibling.num + 1;
         num--;
     }
+
+    public int size(){
+        int size = 0;
+        int i;
+        for (i = 0; i < this.num; i++){
+            if (!isLeaf)
+                size += this.children.get(i).size();
+            size++;
+        }
+
+        if (!isLeaf)
+            size += this.children.get(i).size();
+        return size;
+    }
 }
